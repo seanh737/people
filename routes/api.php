@@ -12,6 +12,19 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-use App\Person;
+//use App\Person;
 //Route::get('/person/{person}','PersonController@show');
-Route::apiResource('/person','PersonController');
+//Route::apiResource('/person','Api\v1\PersonController');
+
+Route::apiResource('/person', 'Api\v1\PersonController')
+    ->only(['show','destroy','update','store']);
+Route::apiResource('/index', 'Api\v1\PersonController')
+    ->only('index');
+
+/*Route::prefix('v1')->group(function(){
+    Route::apiResource('/person', 'Api\v1\PersonController')
+        ->only(['show','destroy','update','store']);
+    Route::apiResource('/index', 'Api\v1\PersonController')
+        ->only('index');
+});*/
+
