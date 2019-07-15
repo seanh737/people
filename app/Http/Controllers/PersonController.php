@@ -25,4 +25,37 @@ class PersonController extends Controller
     {
         return new PersonResourceCollection(Person::paginate());
     }
+
+    /**
+     * @param Request $request
+     * @return PersonResource
+     */
+    public function store(Request $request)
+    {
+        //建立
+        $request->validate([
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required',
+            'phone'         => 'required',
+            'city'          => 'required',
+        ]);
+
+        $person = Person::create($request->all());
+
+        return new PersonResource($person);
+    }
+
+    /**
+     * @param Person $person
+     * @param Request $request
+     * @return PersonResource
+     */
+    public function update(Person $person, Request $request):PersonResource
+    {
+        //更新
+        $person->update($request->all());
+
+        return new PersonResource($person);
+    }
 }
