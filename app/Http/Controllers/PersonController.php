@@ -58,4 +58,16 @@ class PersonController extends Controller
 
         return new PersonResource($person);
     }
+
+    /**
+     * @param Person $person
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
+    public function destroy(Person $person)
+    {
+        $person->delete();
+
+        return response()->json();
+    }
 }
