@@ -13,4 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 use App\Person;
-Route::get('/person/{person}','PersonController@show');
+//Route::get('/person/{person}','PersonController@show');
+Route::apiResource('/person','PersonController');
