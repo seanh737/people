@@ -14,9 +14,9 @@ class PersonController extends Controller
      * @param Person $person
      * @return PersonResource
      */
-    public function show(Person $person): PersonResource
+    public function show(Person $user): PersonResource
     {
-        return new PersonResource($person);
+        return new PersonResource($user);
     }
 
     /**
@@ -34,17 +34,24 @@ class PersonController extends Controller
     public function store(Request $request)
     {
         //建立
-        $request->validate([
+      /*  $request->validate([
             'first_name'    => 'required',
             'last_name'     => 'required',
             'email'         => 'required',
             'phone'         => 'required',
             'city'          => 'required',
+        ]);*/
+
+        $request->validate([
+            'user_id'       => 'required',
+            'name'          => 'required',
+            'email'         => 'required',
+            'password'      => 'required',
         ]);
 
-        $person = Person::create($request->all());
+        $user = Person::create($request->all());
 
-        return new PersonResource($person);
+        return new PersonResource($user);
     }
 
     /**

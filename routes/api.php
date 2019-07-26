@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 //Route::get('/person/{person}','PersonController@show');
 //Route::apiResource('/person','Api\v1\PersonController');
 
-Route::apiResource('/person', 'Api\v1\PersonController')
+Route::apiResource('/user', 'Api\v1\PersonController')
     ->only(['show','destroy','update','store']);
 Route::apiResource('/index', 'Api\v1\PersonController')
     ->only('index');
@@ -27,4 +27,9 @@ Route::apiResource('/index', 'Api\v1\PersonController')
     Route::apiResource('/index', 'Api\v1\PersonController')
         ->only('index');
 });*/
+
+//Route::get('/user/{person}','Api\v1\PersonController@show');
+//Route::POST('/user}','Api\v1\PersonController@store');
+Route::apiResource('/user/1/list', 'Api\v1\listController')
+    ->only(['show','destroy','update','store','index']);
 
