@@ -11,7 +11,8 @@ class CreatePeopleTable extends Migration
      *
      * @return void
      */
-    public function up()
+    //原本people
+    /*public function up()
     {
         Schema::create('people', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -20,6 +21,17 @@ class CreatePeopleTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('city');
+            $table->timestamps();
+        });
+    }*/
+    public function up()
+    {
+        Schema::create('user', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('user_id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -31,6 +43,7 @@ class CreatePeopleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('people');
+        //Schema::dropIfExists('people');
+        Schema::dropIfExists('user');
     }
 }

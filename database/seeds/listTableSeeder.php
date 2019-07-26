@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\lists;
 
-class DatabaseSeeder extends Seeder
+class listTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(PersonTableSeeder::class);
-         $this->call(listTableSeeder::class);
+
+        lists::truncate();
+
+        factory(lists::class, 20)->create();
     }
 }
