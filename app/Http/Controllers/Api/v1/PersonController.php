@@ -7,6 +7,7 @@ use App\Http\Resources\PersonResourceCollection;
 use App\Person;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
 
 class PersonController extends Controller
 {
@@ -77,5 +78,24 @@ class PersonController extends Controller
         $person->delete();
 
         return response()->json();
+    }
+    /*public function get_detail() 失敗
+    {
+        $url = "https://api.postalpincode.in/pincode/110001";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        echo $output;
+    }*/
+    public function get_api()
+    {
+        $client = new Client();
+        $response = $client->request('GET', 'https://api.postalpincode.in/pincode/110001');
+        $statusCode = $response->getStatusCode();
+        $body = $response->getBody()->getContents();
+
+        return $body;
     }
 }

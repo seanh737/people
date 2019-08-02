@@ -33,3 +33,15 @@ Route::apiResource('/index', 'Api\v1\PersonController')
 Route::apiResource('/user/1/list', 'Api\v1\listController')
     ->only(['show','destroy','update','store','index']);
 
+/*use GuzzleHttp\Client;
+Route::get('/json-api', function() {
+    $client = new Client();
+
+    $response = $client->request('GET', 'https://api.postalpincode.in/pincode/110001');
+    $statusCode = $response->getStatusCode();
+    $body = $response->getBody()->getContents();
+
+    return $body;
+});*/
+Route::get('json-api', 'Api\v1\PersonController@get_api');
+
