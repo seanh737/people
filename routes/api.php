@@ -43,5 +43,11 @@ Route::get('/json-api', function() {
 
     return $body;
 });*/
+
+//第三方API
 Route::get('json-api', 'Api\v1\PersonController@get_api');
+
+//檔案上傳、下載
+Route::post('data-save', 'FileController@save_data');
+Route::get('data-save', 'FileController@get_data');
 
